@@ -97,29 +97,32 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
   );
 };
 
-const OneImageGrid = memo(({ currColor, id, colorNum, trueColor }) => {
-  const [color, setColor] = useState("white");
-  // console.log("rendering on eimage", id);
-  return (
-    <TouchableOpacity
-      style={{
-        width: 24,
-        height: 24,
-        // backgroundColor: color,
-        backgroundColor: trueColor,
-        borderColor: colors.grey300,
-        borderWidth: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      onPress={() => {
-        setColor(currColor);
-      }}
-    >
-      <Text style={{ color: colors.grey400 }}>{colorNum}</Text>
-    </TouchableOpacity>
-  );
-});
+const OneImageGrid = memo(
+  ({ currColor, id, colorNum, trueColor, showTrueColor = false }) => {
+    const [color, setColor] = useState("white");
+    // console.log("rendering on eimage", id);
+    return (
+      <TouchableOpacity
+        style={{
+          width: 24,
+          height: 24,
+          backgroundColor: showTrueColor ? trueColor : color,
+          borderColor: colors.grey300,
+          borderWidth: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        onPress={() => {
+          setColor(currColor);
+        }}
+      >
+        {showTrueColor === false && (
+          <Text style={{ color: colors.grey400 }}>{colorNum}</Text>
+        )}
+      </TouchableOpacity>
+    );
+  }
+);
 
 const ImageGrid = memo(({ currColor }) => {
   return (
