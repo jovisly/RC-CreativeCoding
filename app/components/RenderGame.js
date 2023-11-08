@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   FlatList,
@@ -99,8 +99,9 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
   );
 };
 
-const OneImageGrid = ({ currColor }) => {
+const OneImageGrid = memo(({ currColor, id }) => {
   const [color, setColor] = useState("white");
+  console.log("rendering on eimage", id);
   return (
     <TouchableOpacity
       style={{
@@ -115,14 +116,16 @@ const OneImageGrid = ({ currColor }) => {
       }}
     />
   );
-};
+});
 
 const ImageGrid = ({ currColor }) => {
   return (
     <FlatList
       data={gameData}
-      numColumns={3}
-      renderItem={({ item }) => <OneImageGrid currColor={currColor} />}
+      numColumns={14}
+      renderItem={({ item }) => (
+        <OneImageGrid currColor={currColor} id={item.id} />
+      )}
       keyExtractor={(item) => item.id}
     />
   );
