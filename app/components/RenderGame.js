@@ -130,11 +130,11 @@ const ImageGrid = memo(({ currColor }) => {
   return (
     <>
       <Button
-        title={"Reveal"}
+        title={showTrueColor === true ? "Hide" : "Reveal"}
         onPress={() => {
-          setShowTrueColor(true);
+          setShowTrueColor((prev) => !prev);
         }}
-        iconName="eye"
+        iconName={showTrueColor === true ? "eye-off" : "eye"}
       />
       <View style={{ height: 24 }} />
       <FlatList
