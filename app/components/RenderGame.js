@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { gameData } from "./gameData";
+import Button from "../components/Button";
 import * as colors from "../utils/colors";
 
 const OneColor = ({ color, currColor, setCurrColor }) => {
@@ -98,7 +99,7 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
 };
 
 const OneImageGrid = memo(
-  ({ currColor, id, colorNum, trueColor, showTrueColor = false }) => {
+  ({ currColor, id, colorNum, trueColor, showTrueColor }) => {
     const [color, setColor] = useState("white");
     // console.log("rendering on eimage", id);
     return (
@@ -125,20 +126,32 @@ const OneImageGrid = memo(
 );
 
 const ImageGrid = memo(({ currColor }) => {
+  const [showTrueColor, setShowTrueColor] = useState(false);
   return (
-    <FlatList
-      data={gameData}
-      numColumns={14}
-      renderItem={({ item }) => (
-        <OneImageGrid
-          currColor={currColor}
-          id={item.id}
-          colorNum={item.colorNum}
-          trueColor={item.color}
-        />
-      )}
-      keyExtractor={(item) => item.id}
-    />
+    <>
+      <Button
+        title={"Reveal"}
+        onPress={() => {
+          setShowTrueColor(true);
+        }}
+        iconName="eye"
+      />
+      <View style={{ height: 24 }} />
+      <FlatList
+        data={gameData}
+        numColumns={14}
+        renderItem={({ item }) => (
+          <OneImageGrid
+            currColor={currColor}
+            id={item.id}
+            colorNum={item.colorNum}
+            trueColor={item.color}
+            showTrueColor={showTrueColor}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
+    </>
   );
 });
 
@@ -146,10 +159,11 @@ const RenderGame = () => {
   const [currColor, setCurrColor] = useState("#FFFFFF");
   return (
     <View style={styles.container}>
-      <View style={{ height: 80 }} />
+      <View style={{ height: 100 }} />
       <ColorPicker currColor={currColor} setCurrColor={setCurrColor} />
-      <View style={{ height: 80 }} />
+      <View style={{ height: 72 }} />
       <ImageGrid currColor={currColor} />
+
       <StatusBar style="auto" />
     </View>
   );
