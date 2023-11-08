@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { gameData } from "./gameData";
 
+console.log("gameData", gameData);
 const OneColor = ({ color, currColor, setCurrColor }) => {
   const size = 24;
   return (
@@ -92,7 +100,26 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
   );
 };
 
-// Grids for user to fiill in color.
+const ImageGrid = () => {
+  return (
+    <FlatList
+      data={gameData}
+      numColumns={3}
+      renderItem={({ item }) => (
+        <View
+          style={{
+            width: 20,
+            height: 20,
+            backgroundColor: "pink",
+            borderColor: "grey",
+            borderWidth: 1,
+          }}
+        />
+      )}
+      keyExtractor={(item) => item.id}
+    />
+  );
+};
 
 const RenderGame = () => {
   const [currColor, setCurrColor] = useState("purple");
@@ -100,6 +127,8 @@ const RenderGame = () => {
     <View style={styles.container}>
       <View style={{ height: 80 }} />
       <ColorPicker currColor={currColor} setCurrColor={setCurrColor} />
+      <View style={{ height: 80 }} />
+      <ImageGrid currColor={currColor} />
       <StatusBar style="auto" />
     </View>
   );
