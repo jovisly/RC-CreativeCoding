@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { gameData } from "./gameData";
+import * as colors from "../utils/colors";
 
 const OneColor = ({ color, currColor, setCurrColor }) => {
   const size = 24;
@@ -19,6 +20,8 @@ const OneColor = ({ color, currColor, setCurrColor }) => {
         borderRadius: size / 2,
         backgroundColor: color,
         overflow: "visible",
+        borderWidth: 1,
+        borderColor: "grey",
       }}
       onPress={() => {
         setCurrColor(color);
@@ -33,8 +36,8 @@ const OneColor = ({ color, currColor, setCurrColor }) => {
             borderColor: "grey",
             borderWidth: 1,
             position: "absolute",
-            left: -4,
-            top: -4,
+            left: -5,
+            top: -5,
           }}
         />
       )}
@@ -56,42 +59,37 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
     >
       <Text style={{ fontSize: 18 }}> Pick Color: </Text>
       <OneColor
-        color={"pink"}
+        color={"#FFFFFF"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
       <OneColor
-        color={"yellow"}
+        color={"#2B2D2D"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
       <OneColor
-        color={"gray"}
+        color={"#66BD74"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
       <OneColor
-        color={"gray"}
+        color={"#609BD3"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
       <OneColor
-        color={"gray"}
+        color={"#8E6FBE"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
       <OneColor
-        color={"gray"}
+        color={"#CA6387"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
       <OneColor
-        color={"gray"}
-        currColor={currColor}
-        setCurrColor={setCurrColor}
-      />
-      <OneColor
-        color={"purple"}
+        color={"#DDA777"}
         currColor={currColor}
         setCurrColor={setCurrColor}
       />
@@ -99,40 +97,50 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
   );
 };
 
-const OneImageGrid = memo(({ currColor, id }) => {
+const OneImageGrid = memo(({ currColor, id, colorNum, trueColor }) => {
   const [color, setColor] = useState("white");
-  console.log("rendering on eimage", id);
+  // console.log("rendering on eimage", id);
   return (
     <TouchableOpacity
       style={{
         width: 24,
         height: 24,
-        backgroundColor: color,
-        borderColor: "grey",
+        // backgroundColor: color,
+        backgroundColor: trueColor,
+        borderColor: colors.grey300,
         borderWidth: 1,
+        alignItems: "center",
+        justifyContent: "center",
       }}
       onPress={() => {
         setColor(currColor);
       }}
-    />
+    >
+      <Text style={{ color: colors.grey400 }}>{colorNum}</Text>
+    </TouchableOpacity>
   );
 });
 
-const ImageGrid = ({ currColor }) => {
+const ImageGrid = memo(({ currColor }) => {
   return (
     <FlatList
       data={gameData}
       numColumns={14}
       renderItem={({ item }) => (
-        <OneImageGrid currColor={currColor} id={item.id} />
+        <OneImageGrid
+          currColor={currColor}
+          id={item.id}
+          colorNum={item.colorNum}
+          trueColor={item.color}
+        />
       )}
       keyExtractor={(item) => item.id}
     />
   );
-};
+});
 
 const RenderGame = () => {
-  const [currColor, setCurrColor] = useState("purple");
+  const [currColor, setCurrColor] = useState("#FFFFFF");
   return (
     <View style={styles.container}>
       <View style={{ height: 80 }} />
