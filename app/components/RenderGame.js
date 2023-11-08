@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const OneColor = ({ color }) => {
-  const size = 32;
+const OneColor = ({ color, current }) => {
+  const size = 24;
+  console.log("current:", current);
   return (
     <TouchableOpacity
       style={{
@@ -11,13 +12,29 @@ const OneColor = ({ color }) => {
         height: size,
         borderRadius: size / 2,
         backgroundColor: color,
+        overflow: "visible",
       }}
       onPress={() => {}}
-    />
+    >
+      {current === true && (
+        <View
+          style={{
+            width: size + 8,
+            height: size + 8,
+            borderRadius: (size + 8) / 2,
+            borderColor: "grey",
+            borderWidth: 1,
+            position: "absolute",
+            left: -4,
+            top: -4,
+          }}
+        />
+      )}
+    </TouchableOpacity>
   );
 };
 
-const ColorPicker = () => {
+const ColorPicker = ({ currColor, setCurrColor }) => {
   // A color bar is a row of colors.
   return (
     <View
@@ -26,18 +43,18 @@ const ColorPicker = () => {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        gap: 6,
+        gap: 12,
       }}
     >
       <Text style={{ fontSize: 18 }}> Pick Color: </Text>
-      <OneColor color={"pink"} />
-      <OneColor color={"yellow"} />
-      <OneColor color={"gray"} />
-      <OneColor color={"gray"} />
-      <OneColor color={"gray"} />
-      <OneColor color={"gray"} />
-      <OneColor color={"gray"} />
-      <OneColor color={"gray"} />
+      <OneColor color={"pink"} current={"pink" === currColor} />
+      <OneColor color={"yellow"} current={"yellow" === currColor} />
+      <OneColor color={"gray"} current={"gray" === currColor} />
+      <OneColor color={"gray"} current={"gray" === currColor} />
+      <OneColor color={"gray"} current={"gray" === currColor} />
+      <OneColor color={"gray"} current={"gray" === currColor} />
+      <OneColor color={"gray"} current={"gray" === currColor} />
+      <OneColor color={"purple"} current={"purple" === currColor} />
     </View>
   );
 };
@@ -45,11 +62,11 @@ const ColorPicker = () => {
 // Grids for user to fiill in color.
 
 const RenderGame = () => {
-  // What elements will be here?
+  const [currColor, setCurrColor] = useState("purple");
   return (
     <View style={styles.container}>
       <View style={{ height: 80 }} />
-      <ColorPicker />
+      <ColorPicker currColor={currColor} setCurrColor={setCurrColor} />
       <StatusBar style="auto" />
     </View>
   );
