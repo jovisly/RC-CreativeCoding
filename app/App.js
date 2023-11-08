@@ -1,14 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+
+import Button from "./components/Button";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>You can only make one dot at a time!</Text>
+      <Text style={{ fontSize: 18 }}>You can only make one dot at a time!</Text>
+      <View style={{ height: 18 }} />
       <Button
-        style={{ backgroundColor: "pink", width: 100, height: 100 }}
-        title="Press me"
-        onPress={() => Alert.alert("Simple Button pressed")}
+        title="OK!"
+        onPress={() => {
+          console.log("PRESSED!");
+        }}
+        iconName="thumb-up"
       />
       <StatusBar style="auto" />
     </View>
