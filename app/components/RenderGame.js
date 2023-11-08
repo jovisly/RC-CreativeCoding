@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const OneColor = ({ color, current }) => {
+const OneColor = ({ color, currColor, setCurrColor }) => {
   const size = 24;
-  console.log("current:", current);
   return (
     <TouchableOpacity
       style={{
@@ -14,9 +13,11 @@ const OneColor = ({ color, current }) => {
         backgroundColor: color,
         overflow: "visible",
       }}
-      onPress={() => {}}
+      onPress={() => {
+        setCurrColor(color);
+      }}
     >
-      {current === true && (
+      {color === currColor && (
         <View
           style={{
             width: size + 8,
@@ -47,14 +48,46 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
       }}
     >
       <Text style={{ fontSize: 18 }}> Pick Color: </Text>
-      <OneColor color={"pink"} current={"pink" === currColor} />
-      <OneColor color={"yellow"} current={"yellow" === currColor} />
-      <OneColor color={"gray"} current={"gray" === currColor} />
-      <OneColor color={"gray"} current={"gray" === currColor} />
-      <OneColor color={"gray"} current={"gray" === currColor} />
-      <OneColor color={"gray"} current={"gray" === currColor} />
-      <OneColor color={"gray"} current={"gray" === currColor} />
-      <OneColor color={"purple"} current={"purple" === currColor} />
+      <OneColor
+        color={"pink"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"yellow"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"gray"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"gray"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"gray"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"gray"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"gray"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
+      <OneColor
+        color={"purple"}
+        currColor={currColor}
+        setCurrColor={setCurrColor}
+      />
     </View>
   );
 };
