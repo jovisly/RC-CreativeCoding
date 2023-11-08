@@ -103,7 +103,6 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
 
 const OneImageGrid = memo(({ id, colorNum, trueColor, showTrueColor }) => {
   const [color, setColor] = useState(colors.yellow100);
-  console.log("rendering on eimage", id);
 
   return (
     <TouchableOpacity
