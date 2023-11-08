@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { gameData } from "./gameData";
 
-console.log("gameData", gameData);
 const OneColor = ({ color, currColor, setCurrColor }) => {
   const size = 24;
   return (
@@ -100,22 +99,30 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
   );
 };
 
-const ImageGrid = () => {
+const OneImageGrid = ({ currColor }) => {
+  const [color, setColor] = useState("white");
+  return (
+    <TouchableOpacity
+      style={{
+        width: 24,
+        height: 24,
+        backgroundColor: color,
+        borderColor: "grey",
+        borderWidth: 1,
+      }}
+      onPress={() => {
+        setColor(currColor);
+      }}
+    />
+  );
+};
+
+const ImageGrid = ({ currColor }) => {
   return (
     <FlatList
       data={gameData}
       numColumns={3}
-      renderItem={({ item }) => (
-        <View
-          style={{
-            width: 20,
-            height: 20,
-            backgroundColor: "pink",
-            borderColor: "grey",
-            borderWidth: 1,
-          }}
-        />
-      )}
+      renderItem={({ item }) => <OneImageGrid currColor={currColor} />}
       keyExtractor={(item) => item.id}
     />
   );
