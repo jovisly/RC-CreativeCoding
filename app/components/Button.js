@@ -2,6 +2,8 @@ import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import * as colors from "../utils/colors";
+
 const Button = ({ onPress, iconName, title }) => {
   const iconSize = 18;
 
@@ -15,7 +17,7 @@ const Button = ({ onPress, iconName, title }) => {
         paddingVertical: 8,
         paddingLeft: 10,
         paddingRight: 16,
-        backgroundColor: "blue",
+        backgroundColor: colors.indigo400,
         borderRadius: 6,
       }}
       onPress={onPress}
