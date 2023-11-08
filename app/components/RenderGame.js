@@ -11,6 +11,8 @@ import { gameData } from "./gameData";
 import Button from "../components/Button";
 import * as colors from "../utils/colors";
 
+let CURR_COLOR = "#FFFFFF";
+
 const OneColor = ({ color, currColor, setCurrColor }) => {
   const size = 24;
   return (
@@ -25,6 +27,7 @@ const OneColor = ({ color, currColor, setCurrColor }) => {
         borderColor: "grey",
       }}
       onPress={() => {
+        CURR_COLOR = color;
         setCurrColor(color);
       }}
     >
@@ -98,34 +101,33 @@ const ColorPicker = ({ currColor, setCurrColor }) => {
   );
 };
 
-const OneImageGrid = memo(
-  ({ currColor, id, colorNum, trueColor, showTrueColor }) => {
-    const [color, setColor] = useState("white");
-    // console.log("rendering on eimage", id);
-    return (
-      <TouchableOpacity
-        style={{
-          width: 24,
-          height: 24,
-          backgroundColor: showTrueColor ? trueColor : color,
-          borderColor: colors.grey300,
-          borderWidth: 1,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        onPress={() => {
-          setColor(currColor);
-        }}
-      >
-        {showTrueColor === false && (
-          <Text style={{ color: colors.grey400 }}>{colorNum}</Text>
-        )}
-      </TouchableOpacity>
-    );
-  }
-);
+const OneImageGrid = memo(({ id, colorNum, trueColor, showTrueColor }) => {
+  const [color, setColor] = useState(colors.yellow100);
+  console.log("rendering on eimage", id);
 
-const ImageGrid = memo(({ currColor }) => {
+  return (
+    <TouchableOpacity
+      style={{
+        width: 24,
+        height: 24,
+        backgroundColor: showTrueColor ? trueColor : color,
+        borderColor: colors.grey300,
+        borderWidth: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      onPress={() => {
+        setColor(CURR_COLOR);
+      }}
+    >
+      {showTrueColor === false && (
+        <Text style={{ color: colors.grey400 }}>{colorNum}</Text>
+      )}
+    </TouchableOpacity>
+  );
+});
+
+const ImageGrid = memo(() => {
   const [showTrueColor, setShowTrueColor] = useState(false);
   return (
     <>
@@ -142,7 +144,6 @@ const ImageGrid = memo(({ currColor }) => {
         numColumns={14}
         renderItem={({ item }) => (
           <OneImageGrid
-            currColor={currColor}
             id={item.id}
             colorNum={item.colorNum}
             trueColor={item.color}
@@ -156,13 +157,13 @@ const ImageGrid = memo(({ currColor }) => {
 });
 
 const RenderGame = () => {
-  const [currColor, setCurrColor] = useState("#FFFFFF");
+  const [currColor, setCurrColor] = useState(CURR_COLOR);
   return (
     <View style={styles.container}>
       <View style={{ height: 100 }} />
       <ColorPicker currColor={currColor} setCurrColor={setCurrColor} />
       <View style={{ height: 72 }} />
-      <ImageGrid currColor={currColor} />
+      <ImageGrid />
 
       <StatusBar style="auto" />
     </View>
