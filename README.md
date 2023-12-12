@@ -3,6 +3,8 @@
 A little app made during Creative Coding on Nov. 8, 2023, which is also in
 preparation for a React Native session the following week.
 
+![Example screenshot](example.png)
+
 ## Set Up
 
 This app is built with [Expo](https://expo.dev/).
