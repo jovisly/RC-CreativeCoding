@@ -3,7 +3,7 @@
 A little app made during Creative Coding on Nov. 8, 2023, which is also in
 preparation for a React Native session the following week.
 
-![Example screenshot](example.png)
+![Example screenshot](example-smaller.png)
 
 ## Set Up
 
