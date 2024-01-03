@@ -166,3 +166,9 @@ Then the folder `chrome-extension` can be used to load as unpacked in developer
 mode.
 
 ![time-after-time](./images/time-after-time.png)
+
+## Jan. 3, 2024: Rest Tracker
+
+Prompt: _"the rest is still unwritten"_
+
+Result: `./rest-tracker/`
