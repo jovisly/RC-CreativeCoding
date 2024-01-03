@@ -172,3 +172,17 @@ mode.
 Prompt: _"the rest is still unwritten"_
 
 Result: `./rest-tracker/`
+
+We start the new year with an uplifting prompt. Charlie had a great idea of
+making a rest tracker, and we also paired with Dan on it.
+
+To run it, simply do `python main.py`, but you do need to install the `openai`
+package, and have an API key, as it uses ChatGPT to interpret user input and
+formatting the rest log. It also uses AppleScript to interact with the user via
+voice, so we've only tested it on a Mac. You can comment out the AppleScript
+part and simply print out the messages to the console as an alternative.
+
+What the tracker does is that it reminds you to take a rest. It asks you when
+did you last take a rest (and saves that into a `.json` file as a simple local
+database). If you haven't taken a rest in a while, it will strongly nudge you to
+do so instead of working.
