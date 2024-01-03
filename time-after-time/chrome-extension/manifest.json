@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Time after Time",
+  "description": "Show the time, but after time.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icons/icon128.png"
+  }
+}

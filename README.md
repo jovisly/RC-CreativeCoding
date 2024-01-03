@@ -107,3 +107,62 @@ You can see the result in [this spreadsheet](https://docs.google.com/spreadsheet
 To match the prompt, the spreadsheet converts how one penny spent on the stock
 would later become in pounds. For example, if I had put one penny in Apple in 1982,
 I'd have 9.81 pounds in 2020! Should've would've could've!
+
+## Dec. 13, 2023: Time after Time
+
+Prompt: _"Time after time"_
+
+Result: `./time-after-time/`
+
+I became the organizer of Creative Coding, and this was my first prompt. I took
+the prompt very literally and made a clock that shows the time, but after time, i.e.,
+in the future.
+
+This app is made as both a web app and a chrome extension. You can play with the
+web version at [creative-coding-time-after-time.web.app/](https://creative-coding-time-after-time.web.app/).
+
+## Set up
+
+We are using [vite](https://vitejs.dev/) plus React in Typescript.
+
+```
+> npm create vite@latest
+```
+
+Then run the web app with
+
+```
+> npm run dev
+```
+
+## Chrome Extension
+
+We will set up the chrome extension as a simple pop up. To build the chrome
+extension, first build the web app, which gives us a `dist` folder by default.
+
+```
+> npm run build
+```
+
+Then copy over the built files into the `chrome-extension` folder.
+
+```
+> cp -R ../app/dist/  ./
+```
+
+Add the following into `index.html` to update app size:
+
+```
+    <style>
+      /* This determines Chrome popup size */
+      body {
+        width: 320px; /* maximum 800px */
+        height: 320px; /* maximum 600px */
+      }
+    </style>
+```
+
+Then the folder `chrome-extension` can be used to load as unpacked in developer
+mode.
+
+![time-after-time](./images/time-after-time.png)
