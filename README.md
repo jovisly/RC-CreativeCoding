@@ -18,14 +18,14 @@ I really love Creative Coding:
 - it allowed me to think about coding as a creative endeavor
 - the strict time limit forces me to push for results
 - yet I can explore new technologies with a healthy timebox
-- it feels like Top Chef or Chopped, but for coding and there's no competition,
-  just fun and inspirations from others
+- the excitement of making something within time limit feels like Top Chef or Chopped,
+  except for coding and there's no competition, just fun and inspirations from others
 
 ## Nov. 8, 2023: One Dot
 
 Prompt: _"You can only make one dot at a time"_
 
-Result: `./one-dot/` -
+Result: `./one-dot/`
 
 One dot is a little pixel coloring game. I also made it in preparation for a
 discussion on React Native the following week.
@@ -93,6 +93,17 @@ number of rocks.
 
 Prompt: _"Penny wise, pound foolish"_
 
+Result: `./penny-stocks/`
+
 I misinterpreted this saying as how the penny is wise and the pound is foolish.
 Turns out it's the opposite. It actually means being smart in small things but
-missing the big picture.
+missing the big picture. That's very wise but my mind was already on the track of
+"smart pennies", which brought me to the thought of penny stocks that turned into
+big returns.
+
+So I gathered some [stock data from Kaggle](https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset),
+and created a processed dataset of one-time penny stocks that became very successful.
+You can see the result in [this spreadsheet](https://docs.google.com/spreadsheets/d/1FQb6mn_beTK_iJK4Fuc6q_nu7lTAj8oTDtAitSLFntI/edit#gid=1018175396).
+To match the prompt, the spreadsheet converts how one penny spent on the stock
+would later become in pounds. For example, if I had put one penny in Apple in 1982,
+I'd have 9.81 pounds in 2020! Should've would've could've!
