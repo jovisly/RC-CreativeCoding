@@ -186,3 +186,12 @@ What the tracker does is that it reminds you to take a rest. It asks you when
 did you last take a rest (and saves that into a `.json` file as a simple local
 database). If you haven't taken a rest in a while, it will strongly nudge you to
 do so instead of working.
+
+## Jan. 10, 2024: Murphy's Law Tetris
+
+Prompt: _"Murphy's law"_
+
+Result: `./murphys-law-tetris/`
+
+The Murphy's Law Tetris was built with [vite](https://vitejs.dev/guide/) and
+[react-tetris](https://www.npmjs.com/package/react-tetris).
