@@ -12,6 +12,7 @@ function App() {
 
   useEffect(() => {
     const audio = new Audio(upbeatMusic);
+    audio.loop = true;
     if (hasStarted) {
       audio.play();
     }

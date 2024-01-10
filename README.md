@@ -197,3 +197,9 @@ The Murphy's Law Tetris was built with [vite](https://vitejs.dev/guide/) and
 [react-tetris](https://www.npmjs.com/package/react-tetris). Then we use
 [patch-package](https://www.npmjs.com/package/patch-package) to mess up the pieces
 distribution, game speed, and scoring to introduce various Murphy's Law effects.
+
+We also add a surprise element that blocks the screen partially.
+
+![murphys-law-tetris](./images/murphys-law-tetris.png)
+
+You can play it at [murphys-law-tetris.web.app/](https://murphys-law-tetris.web.app/)!
