@@ -1,20 +1,19 @@
 diff --git a/node_modules/react-tetris/lib/components/Tetris.js b/node_modules/react-tetris/lib/components/Tetris.js
-index 1715dd8..185e75f 100644
+index 1715dd8..a409e7b 100644
 --- a/node_modules/react-tetris/lib/components/Tetris.js
 +++ b/node_modules/react-tetris/lib/components/Tetris.js
-@@ -27,17 +27,24 @@ export default function Tetris(props) {
+@@ -27,17 +27,23 @@ export default function Tetris(props) {
      var keyboardMap = (_a = props.keyboardControls) !== null && _a !== void 0 ? _a : defaultKeyboardMap;
      useKeyboardControls(keyboardMap, dispatch);
      var level = Game.getLevel(game);
-+    var lines = game.lines;
++    var numPieces = game.numPieces;
 +
      React.useEffect(function () {
          var interval;
 +        const minLevel = level
 +        // Don't increase the level at beginning of the game.
-+        const maxLevel = lines == 0 ? level : level + 5
++        const maxLevel = numPieces <= 5 ? level : level + 5
 +        const randLevel = Math.floor(Math.random() * (maxLevel - minLevel + 1)) + minLevel;
-+        console.log("randLevel", randLevel)
          if (game.state === 'PLAYING') {
              interval = window.setInterval(function () {
                  dispatch('TICK');
@@ -25,10 +24,46 @@ index 1715dd8..185e75f 100644
              window.clearInterval(interval);
          };
 -    }, [game.state, level]);
-+    }, [game.state, level, lines]);
++    }, [game.state, level, numPieces]);
      var controller = React.useMemo(function () { return ({
          pause: function () { return dispatch('PAUSE'); },
          resume: function () { return dispatch('RESUME'); },
+diff --git a/node_modules/react-tetris/lib/models/Game.js b/node_modules/react-tetris/lib/models/Game.js
+index 593a62e..9a13fbf 100644
+--- a/node_modules/react-tetris/lib/models/Game.js
++++ b/node_modules/react-tetris/lib/models/Game.js
+@@ -86,8 +86,21 @@ var lockInPiece = function (game) {
+     var _a = setPiece(game.matrix, game.piece), matrix = _a[0], linesCleared = _a[1];
+     var next = PieceQueue.getNext(game.queue);
+     var piece = initializePiece(next.piece);
+-    return __assign(__assign({}, game), { state: isEmptyPosition(matrix, piece) ? game.state : 'LOST', matrix: matrix, piece: piece, heldPiece: game.heldPiece
+-            ? __assign(__assign({}, game.heldPiece), { available: true }) : undefined, queue: next.queue, lines: game.lines + linesCleared, points: game.points + addScore(linesCleared) });
++    var gamePoints = game.points + addScore(linesCleared)
++    // Mess with game points.
++    var minGamePoints = gamePoints - 0.4 * gamePoints
++    var maxGamePoints = gamePoints + 0.4 * gamePoints
++    var randGamePoints = Math.floor(Math.random() * (maxGamePoints - minGamePoints) + minGamePoints);
++    return __assign(__assign({}, game), {
++        state: isEmptyPosition(matrix, piece) ? game.state : 'LOST',
++        matrix: matrix, piece:
++        piece,
++        heldPiece: game.heldPiece ? __assign(__assign({}, game.heldPiece), { available: true }) : undefined,
++        queue: next.queue,
++        lines: game.lines + linesCleared,
++        points: randGamePoints,
++        numPieces: game.numPieces + 1
++    });
+ };
+ var pointsPerLine = 100;
+ var addScore = function (additionalLines) {
+@@ -123,6 +136,7 @@ export var init = function () {
+         state: 'PLAYING',
+         points: 0,
+         lines: 0,
++        numPieces: 0,
+         matrix: buildMatrix(),
+         piece: initializePiece(next.piece),
+         heldPiece: undefined,
 diff --git a/node_modules/react-tetris/lib/modules/piece-queue.js b/node_modules/react-tetris/lib/modules/piece-queue.js
 index 93a4bba..39c443d 100644
 --- a/node_modules/react-tetris/lib/modules/piece-queue.js
