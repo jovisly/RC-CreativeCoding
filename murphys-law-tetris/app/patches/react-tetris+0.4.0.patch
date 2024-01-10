@@ -1,15 +1,34 @@
-diff --git a/node_modules/react-tetris/lib/models/Piece.js b/node_modules/react-tetris/lib/models/Piece.js
-index 855959d..f7a97d9 100644
---- a/node_modules/react-tetris/lib/models/Piece.js
-+++ b/node_modules/react-tetris/lib/models/Piece.js
-@@ -3,6 +3,7 @@ export var pieces = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
- export var isRotation = function (num) {
-     return num >= 0 && num < Constants.ROTATION_COUNT;
- };
-+console.log("DOES THIS LEAVE A TRACE?")
- export var getBlocks = function (piece) {
-     switch (piece) {
-         case 'I':
+diff --git a/node_modules/react-tetris/lib/components/Tetris.js b/node_modules/react-tetris/lib/components/Tetris.js
+index 1715dd8..185e75f 100644
+--- a/node_modules/react-tetris/lib/components/Tetris.js
++++ b/node_modules/react-tetris/lib/components/Tetris.js
+@@ -27,17 +27,24 @@ export default function Tetris(props) {
+     var keyboardMap = (_a = props.keyboardControls) !== null && _a !== void 0 ? _a : defaultKeyboardMap;
+     useKeyboardControls(keyboardMap, dispatch);
+     var level = Game.getLevel(game);
++    var lines = game.lines;
++
+     React.useEffect(function () {
+         var interval;
++        const minLevel = level
++        // Don't increase the level at beginning of the game.
++        const maxLevel = lines == 0 ? level : level + 5
++        const randLevel = Math.floor(Math.random() * (maxLevel - minLevel + 1)) + minLevel;
++        console.log("randLevel", randLevel)
+         if (game.state === 'PLAYING') {
+             interval = window.setInterval(function () {
+                 dispatch('TICK');
+-            }, tickSeconds(level) * 1000);
++            }, tickSeconds(randLevel) * 1000);
+         }
+         return function () {
+             window.clearInterval(interval);
+         };
+-    }, [game.state, level]);
++    }, [game.state, level, lines]);
+     var controller = React.useMemo(function () { return ({
+         pause: function () { return dispatch('PAUSE'); },
+         resume: function () { return dispatch('RESUME'); },
 diff --git a/node_modules/react-tetris/lib/modules/piece-queue.js b/node_modules/react-tetris/lib/modules/piece-queue.js
 index 93a4bba..39c443d 100644
 --- a/node_modules/react-tetris/lib/modules/piece-queue.js

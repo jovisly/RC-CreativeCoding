@@ -24,14 +24,24 @@ function App() {
           shift: "HOLD",
         }}
       >
-        {({ Gameboard, points, state, controller }) => (
+        {({ Gameboard, points, level, state, controller }) => (
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Gameboard />
 
             <div style={{ width: "24px" }} />
-            <div style={{ display: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
               <div>
-                <h2>Points: {points}</h2>
+                <h3>Points: {points}</h3>
+              </div>
+
+              <div>
+                <h3>Level: {level}</h3>
               </div>
 
               <div style={{ height: "24px" }} />
