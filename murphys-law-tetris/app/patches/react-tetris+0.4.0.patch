@@ -1,0 +1,33 @@
+diff --git a/node_modules/react-tetris/lib/models/Piece.js b/node_modules/react-tetris/lib/models/Piece.js
+index 855959d..f7a97d9 100644
+--- a/node_modules/react-tetris/lib/models/Piece.js
++++ b/node_modules/react-tetris/lib/models/Piece.js
+@@ -3,6 +3,7 @@ export var pieces = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
+ export var isRotation = function (num) {
+     return num >= 0 && num < Constants.ROTATION_COUNT;
+ };
++console.log("DOES THIS LEAVE A TRACE?")
+ export var getBlocks = function (piece) {
+     switch (piece) {
+         case 'I':
+diff --git a/node_modules/react-tetris/lib/modules/piece-queue.js b/node_modules/react-tetris/lib/modules/piece-queue.js
+index 93a4bba..39c443d 100644
+--- a/node_modules/react-tetris/lib/modules/piece-queue.js
++++ b/node_modules/react-tetris/lib/modules/piece-queue.js
+@@ -44,7 +44,15 @@ function pullFromBucket(bucket) {
+         // fill the bucket
+         pieces.forEach(function (piece) {
+             // 4 is just the number of each type of piece. it's arbitrary, not magic, okay.
+-            for (var i = 0; i < 4; i++) {
++            var numPieces = 4;
++            if (piece == "I") {
++                numPieces = 2
++            } else if (piece == "S") {
++                numPieces = 8
++            } else if (piece == "Z") {
++                numPieces = 8
++            }
++            for (var i = 0; i < numPieces; i++) {
+                 local.push(piece);
+             }
+         });

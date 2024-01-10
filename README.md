@@ -194,4 +194,6 @@ Prompt: _"Murphy's law"_
 Result: `./murphys-law-tetris/`
 
 The Murphy's Law Tetris was built with [vite](https://vitejs.dev/guide/) and
-[react-tetris](https://www.npmjs.com/package/react-tetris).
+[react-tetris](https://www.npmjs.com/package/react-tetris). Then we use
+[patch-package](https://www.npmjs.com/package/patch-package) to mess up the pieces
+distribution, game speed, and scoring to introduce various Murphy's Law effects.

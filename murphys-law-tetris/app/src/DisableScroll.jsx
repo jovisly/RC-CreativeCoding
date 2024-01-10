@@ -16,7 +16,7 @@ const DisableScroll = () => {
     };
   }, []);
 
-  return <div>{/* Your content here */}</div>;
+  return <div />;
 };
 
 export default DisableScroll;

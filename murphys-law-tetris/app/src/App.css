@@ -19,26 +19,26 @@
   border: 1px solid #ddd;
 }
 .piece-i {
-  background-color: #ec858b;
+  background-color: #ffc6ff;
 }
 .piece-j {
-  background-color: #f1b598;
+  background-color: #bdb2ff;
 }
 .piece-l {
-  background-color: #f8efae;
+  background-color: #a0c4ff;
 }
 .piece-o {
-  background-color: #b5a677;
+  background-color: #9bf6ff;
 }
 .piece-s {
-  background-color: #816e56;
+  background-color: #caffbf;
 }
 .piece-t {
-  background-color: #b77c72;
+  background-color: #ffd6a5;
 }
 .piece-z {
-  background-color: #e3be58;
+  background-color: #ffadad;
 }
 .piece-preview {
-  background-color: #eee;
+  background-color: #242424;
 }
