@@ -59,8 +59,9 @@ function App() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: "100vw",
+        width: "800px",
         height: "90vh",
+        position: "relative",
       }}
     >
       <h1>{"Murphy's Law Tetris"}</h1>
