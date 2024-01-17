@@ -203,3 +203,15 @@ We also add a surprise element that blocks the screen partially.
 ![murphys-law-tetris](./images/murphys-law-tetris.png)
 
 You can play it at [murphys-law-tetris.web.app/](https://murphys-law-tetris.web.app/)!
+
+## Jan. 17, 2024: Euler Spiral
+
+Prompt: _"With great power..."_
+
+Result: `./euler-spiral/`
+
+I wanted to make some graphs today and ended up with the [Euler Spiral](https://en.wikipedia.org/wiki/Euler_spiral).
+
+![euler-spiral-3.7](./images/euler-spiral-3.7.png)
+![euler-spiral-3.8](./images/euler-spiral-3.8.png)
+![euler-spiral-3.9](./images/euler-spiral-3.9.png)
