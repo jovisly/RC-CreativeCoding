@@ -215,3 +215,43 @@ I wanted to make some graphs today and ended up with the [Euler Spiral](https://
 ![euler-spiral-3.7](./images/euler-spiral-3.7.png)
 ![euler-spiral-3.8](./images/euler-spiral-3.8.png)
 ![euler-spiral-3.9](./images/euler-spiral-3.9.png)
+
+## Jan. 24, 2024: SDXL Monsters
+
+Prompt: _"Impossible objects (undecided geometry)."_
+
+Today's prompt was from [genuary](https://genuary.art/prompts#jan24). This makes
+me want to create some monsters with impossible features. So I followed Hugging
+Face's [documentation](https://huggingface.co/docs/diffusers/using-diffusers/sdxl)
+and generated a bunch of monsters and creatures in various styles with Stable
+Diffusion, running on GPU on Google Colab.
+
+_"ghibli style, a fantasy creature with 7 eyes, 3 legs, 2 wings, and 6 antennas, muted colors, detailed"_
+![sdxl-1](./images/sdxl-1.jpg)
+
+_"pixar style, a monster creature with 3 eyes, 2 legs, hairy, friendly, playing a yo-yo, vibrant colors, detailed"_
+![sdxl-2](./images/sdxl-2.jpg)
+
+_"a cute pokemon with 3 big eyes, no leg, round shaped, flying, in attack pose, soothing colors"_
+![sdxl-3](./images/sdxl-3.jpg)
+
+_"an ancient monster, no eyes, fish shaped, big mouth, two arms, sketched, leonardo da vinci drawing style, pencil on parchment paper"_
+![sdxl-4](./images/sdxl-4.jpg)
+
+_"digital art, midjourney style, colorful, fantasy creature, giant, four long arms, two legs, horn on the head, detailed, 8k"_
+![sdxl-5](./images/sdxl-5.jpg)
+
+_"an impossible object with undecided geometry, salvador dali style, primary colors, detailed 8k"_
+![sdxl-6](./images/sdxl-6.jpg)
+
+_"ancient mystery creature, classical oil painting, many legs, dragon like, lightening bolts in the background, detailed"_
+![sdxl-7](./images/sdxl-7.jpg)
+
+_"it's van gogh's starry night but there is one giant flying creature in the sky spitting out fire, a screaming person in the foreground, artistic"_
+![sdxl-8](./images/sdxl-8.jpg)
+
+_"ascii art of a mysterious creature with three big eyes, no leg, rainbow color palette"_
+![sdxl-9](./images/sdxl-9.jpg)
+
+_"Osamu Tezuka style, friendly monster, octopus like, big sparkly eyes, simple color palette"_
+![sdxl-10](./images/sdxl-10.jpg)
